@@ -1,0 +1,38 @@
+﻿@model ExpenseApp1.Models.ExpenseModel;
+
+@{
+    ViewData["Title"] = "経費計算";
+}
+
+<div class="text-center">
+    <h1 class="display-4">経費計算</h1>
+</div>
+<form asp-action="Calculate" asp-controller="Home" method="post">
+    <div>
+        <table border="1">
+            <!--実施予定日の行-->
+            <tr>
+                <td>実施予定日</td>
+                <td><input type="date" asp-for="Date" /></td>
+            </tr>
+            <!--総人数の行-->
+            <tr>
+                <td>総人数</td>
+                <td><input type="number" asp-for="TotalPeople" /></td>
+            </tr>
+            <!--予算及び総額の行-->
+            <tr>
+                <td>予算</td>
+                <td>総額(税込)</td>
+                <td><input type="number" asp-for="TotalPricesWithTax" /></td>
+            </tr>
+            <!--一人あたりの行-->
+            <tr>
+                <td>一人あたり(税抜き)</td>
+                <td><input type="text" value=@ViewBag.PerPersonWithoutTax readonly />円/人</td>
+            </tr>
+        </table>
+
+        <input type="submit" value="計算" />
+    </div>
+</form>
